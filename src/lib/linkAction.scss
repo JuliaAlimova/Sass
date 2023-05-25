@@ -1,0 +1,15 @@
+@use './var.scss';
+@use './space.scss';
+
+@mixin linkAction {
+  color: var.color('primary');
+
+  &::after {
+    display: inline-block;
+    content: '';
+    width: 7px;
+    height: 12px;
+    background-image: url('/svg/arrowAction.svg');
+    margin-left: space.space(2);
+  }
+}

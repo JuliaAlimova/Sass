@@ -1,0 +1,238 @@
+@use '../../lib/service.scss' as s;
+
+.page {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.header {
+  @extend .section;
+  background-color: s.color('backgroundDark');
+}
+
+.header__content {
+  @extend .section__content;
+
+  display: flex;
+  padding: s.space(4) 0;
+  justify-content: space-between;
+}
+
+.header__block {
+  display: flex;
+  gap: s.space(8);
+  align-items: center;
+}
+
+.header__icon {
+  @include s.click;
+}
+
+.header__link {
+  color: s.color('whiteLight');
+  font-size: s.size('x-small');
+
+  @include s.click;
+}
+
+// =======================================
+
+.advertising {
+  @extend .section;
+  background-color: s.color('white');
+}
+
+.ad__content {
+  @extend .section__content;
+
+  display: flex;
+  padding: s.space(3) 0;
+  justify-content: space-between;
+  gap: s.space(3);
+}
+
+.ad__description {
+  color: s.color('fontDark');
+  font-size: s.size('small');
+}
+
+.ad__link {
+  @include s.linkAction;
+  @include s.click;
+
+  font-size: s.size('small');
+}
+
+// ==============================================
+
+.product {
+  @extend .section;
+
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+
+.section__double {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media all and (width < s.screen('tablet')) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.product__content {
+  display: grid;
+  gap: s.space(5);
+  text-align: center;
+  align-content: center;
+}
+
+.product__title {
+  font-size: s.space(14);
+  font-weight: bold;
+}
+
+.product__descriptions {
+  font-size: s.space(7);
+}
+
+.product__action {
+  display: flex;
+  align-items: center;
+  gap: s.space(5);
+  justify-content: center;
+
+  @include s.click;
+}
+
+.product__link {
+  @include s.linkAction;
+}
+
+.product-big {
+  max-height: 700px;
+  height: 100vh;
+
+  padding-top: s.space(20);
+  padding-bottom: s.space(20);
+
+  background-size: cover;
+
+  @media all and (width < s.screen('tablet')) {
+    background-size: 150%;
+    max-height: 500px;
+  }
+}
+
+.product-small {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  max-height: 580px;
+  height: 100vh;
+
+  background-size: cover;
+
+  @media all and (width < s.screen('tablet')) {
+    background-size: 90%;
+    max-height: 400px;
+  }
+
+  .product__title {
+    font-size: 40px;
+  }
+
+  .product__descriptions {
+    font-size: 20px;
+  }
+}
+
+.product--dark {
+  .product__title,
+  .product__descriptions {
+    color: s.color('background');
+  }
+}
+
+.product--light {
+  .product__title,
+  .product__descriptions {
+    color: s.color('fontDark');
+  }
+}
+
+.product--top {
+  .product__content {
+    align-content: flex-start;
+  }
+}
+
+.product--bottom {
+  .product__content {
+    align-content: flex-end;
+  }
+}
+
+$productImage: (
+  'iphone-pro' '/img/iphonePro.png' #000,
+  'iphone' '/img/iphone.png' #fafafa,
+  'iwatch' '/img/iwatch.png' #000,
+  'tradeIn' '/img/tradeIn.png' #fbfbfd,
+  'conference' '/img/conference.png' #000,
+  'ipad' '/img/ipad.png' #fbfbfb,
+  'smallBusiness' '/img/smallBusiness.png' #000,
+  'gift' '/img/gift.png' #fbfbfb,
+  'card' '/img/card.png' #fbfbfb
+);
+
+@each $class, $url, $color in $productImage {
+  .product--#{$class} {
+    background-image: url(#{$url});
+    background-color: $color;
+  }
+}
+
+// ====================================
+
+.footer {
+  @extend .section;
+  background-color: s.color('background');
+}
+
+.footer__content {
+  @extend .section__content;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: s.space(5);
+  align-items: start;
+  padding: s.space(10) 0;
+
+  @media all and (width < s.screen('mobile')) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer__block {
+  display: grid;
+  gap: s.space(4);
+}
+
+.footer__title {
+  font-weight: 600;
+  font-size: s.size('x-small');
+  color: s.color('fontDark');
+}
+
+.footer__list {
+  display: grid;
+  gap: s.space(3);
+}
+
+.footer__link {
+  color: #424245;
+  font-size: s.size('x-small');
+
+  @include s.click;
+}
