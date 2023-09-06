@@ -31,14 +31,3 @@ $screenMap: (
 @function screen($key) {
   @return map-get($screenMap, $key);
 }
-
-$contentSizeMap: (
-  desktop: 1200px,
-  laptop: 1000px,
-  tablet: 800px,
-  mobile: 600px,
-);
-
-@function contentSize($key) {
-  @return map-get($contentSizeMap, $key);
-}
